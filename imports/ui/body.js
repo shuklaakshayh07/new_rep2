@@ -96,7 +96,7 @@ Template.body.events({
     },
     'click .pr_sort'(event,instance) {
         console.log("click1");
-    //    console.log(event.target.true);
+        console.log(event);
         instance.state.set('pr_sort',true);
         instance.state.set('date_sort',false);
         console.log(instance);
@@ -119,21 +119,21 @@ Template.body.events({
 
     'click .closebtn'(event,instance){
     document.getElementById("mySidenav").style.width = "0";
-},
-'click .todo'(event,instance){
-        event.state.set('todo',true);
-        event.state.set('doing',false);
-        event.state.set('done',false);
-        },
-'click .doing'(event,instance){
-    event.state.set('todo',false);
-    event.state.set('doing',true);
-    event.state.set('done',false);
-},
-'click.done'(event,instance){
-        event.state.set('todo',false);
-        event.state.set('doing',false);
-        event.state.set('done',true);
 }
+// 'click .todo'(event,instance){
+//         event.state.set('todo',true);
+//         event.state.set('doing',false);
+//         event.state.set('done',false);
+//         },
+// 'click .doing'(event,instance){
+//     event.state.set('todo',false);
+//     event.state.set('doing',true);
+//     event.state.set('done',false);
+// },
+// 'click.done1'(event,instance){
+//         event.state.set('todo',false);
+//         event.state.set('doing',false);
+//         event.state.set('done',true);
+// }
 
 });

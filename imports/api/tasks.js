@@ -73,8 +73,11 @@ Meteor.methods({
       check(taskId, String);
       check(updateTask, String);
       const task=Tasks2.findOne(taskId);
-      Tasks2.update(taskId, { $set:{text: updateTask}});
-      Tasks2.update(taskId, { $set:{priority: updatePr}});
+     // console.log(taskId);
+      Tasks2.update(taskId, { $set: { text: updateTask } });
 
+      Tasks2.update(taskId, { $set:{priority: updatePr} });
+      Task.update(taskId,{$set:{updated: new Date()}})
+      console.log("in tasks.edit(meteor)");
   }
 });

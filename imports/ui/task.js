@@ -53,31 +53,41 @@ Template.task.events({
        console.log(instance);
 
    },
-   'click.toggle-update'()//todo
+   'click .toggle-update'()//todo
    {
-       document.getElementById("edit-task").style.display = "block";
+       document.getElementById("edit_task").style.display = "block";
        document.getElementById("edit_button").style.display="none";
-       document.getElementById("save_button").style.display="block";
+    //    document.getElementById("save_button").style.display="block";
     //    document.getElementById("update_option").style.display="block";
     //    $('.edit-task input').css('display','block');
    },
-   'click.toggle-save'()
-   {   event.preventDefault();
-       const updateTask=document.getElementById("update_task").value;
-        const updatePr=document.getElementById("update_pr_no").value;
-       Meteor.call('tasks.edit',this._id,updateTask,updatePr);
-       document.getElementById("edit-task").style.display = "none";
-       document.getElementById("edit_button").style.display="block";
-       document.getElementById("save_button").style.display="none";
-    //    $('.edit-task input').css('display','none');
-
+   'click .saveEditedTask'(event){
+       event.preventDefault();
+       console.log("yes");
+       var editedTask = document.getElementById("updated_text").value;
+         event.preventDefault();
+       var editedPr = document.getElementById("update_pr_no").value;
+       console.log("editedTask",editedTask);
+       console.log("editedPR",editedPr);
+        Meteor.call('tasks.edit',this._id,editedTask,editedPr);
+        document.getElementById("updated_text").style.display = "none";
+        document.getElementById("edit_button").style.display="block";
+        document.getElementById("update_pr_no").style.display="none";
+        document.getElementById("Setbtn").style.display="none";
    }
- /*  'click.update_option'()
-   {
-       document.getElementById("edit-task").style.display = "none";
-       document.getElementById("edit_button").style.display="block";
-       document.getElementById("save_button").style.display="none";
-       document.getElementById("update_option").style.display="none";
-   }*/
+ //   'click.toggle-save'()
+ //   {   event.preventDefault();
+ //       const updateTask=document.getElementById("update_task").value;
+ //       const updatePr=document.getElementById("update_pr_no").value;
+ //
+ //       Meteor.call('tasks.edit',this._id,updateTask,updatePr);
+ //       document.getElementById("edit-task").style.display = "none";
+ //       document.getElementById("edit_button").style.display="block";
+ //       document.getElementById("save_button").style.display="none";
+ //       console.log("hidden");
+ //    //    $('.edit-task input').css('display','none');
+ //
+ //   }
+ // /*  'click.update_option'()
 
 });

@@ -13,10 +13,13 @@
         {{/if}}
       </button>
 
-      <form id="edit-task" class="edit-task" >
-        <input type="text" id='update_task' class="updateTask" name="task_text"  placeholder="Type to add new tasks" />
-        <input type="number" id='update_pr_no' min="1" class="pr" max="3" name="priority" placeholder="priority of task"/>
-    </form>
+      <form class="edit-task" id=edit_task >
+        <input id="updated_text" type="text"  placeholder="Type updated tasks" />
+        <input type="number" id='update_pr_no' min="1"  max="3"  placeholder="priority of task"/>
+        <button class="saveEditedTask" id="Setbtn">save</button>
+        </form>
+
+
 
       <button id="edit_button" class="toggle-update">edit
       </button><button class="update_option" id="update_option">&times;</button>
