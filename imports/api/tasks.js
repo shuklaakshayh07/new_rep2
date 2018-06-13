@@ -77,7 +77,7 @@ Meteor.methods({
       Tasks2.update(taskId, { $set: { text: updateTask } });
 
       Tasks2.update(taskId, { $set:{priority: updatePr} });
-      Task.update(taskId,{$set:{updated: new Date()}})
+      Tasks2.update(taskId,{$set:{updated: new Date()}})
       console.log("in tasks.edit(meteor)");
   }
 });

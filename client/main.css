@@ -106,7 +106,7 @@ ul {
   font-size: 1em;
   border: none;
   position: relative;
-  display: none;
+  display: block;
 }
 .update_option {
   float: right;
