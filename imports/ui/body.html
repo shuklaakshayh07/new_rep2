@@ -1,0 +1,67 @@
+
+<body>
+  <div class="container">
+    <header>
+                <div><h1>Todo List ({{incompleteCount}})</h1></div>
+                <h2 >Task completed: ({{completeCount}})</h2>
+
+
+          <div class="dropdown"><br>
+   <button class="dropbtn">SortBy</button>
+   <div class="dropdown-content">
+     <button class="pr_sort"  type="button"><br>Priority</button>
+     <button class="date_sort"  type="button">Date of Creation</button  >
+   </div>
+ </div>
+
+    <label class="">
+     <input type="checkbox" />
+        Hide Completed Tasks
+        </label>
+
+
+          <label class="show-delete">
+        <input type="checkbox" />
+        deleted task
+      </label>
+      {{> loginButtons}}
+      {{#if currentUser}}
+        <div style='inline-block'>
+        <form name="new-task" >
+          <input type="text" id='name_task' name="task_text" class="text" placeholder="Type to add new tasks" />
+          <input type="number" id='pr_no' min="1" class="pr" max="3" name="priority" placeholder="priority of task"/>
+          <div class="dropdown"><br>
+              <button class="dropbtn">type of job</button>
+              <div class="dropdown-content">
+             <button class="to_dotype"  type="button"><br>to_dotype</button>
+             <button class="doingtype"  type="button">Date of Creation</button  >
+           </div>
+         </div>
+
+           <button type="submit" class="button1">save it!</button>
+        </form>
+ </div>
+      {{/if}}
+
+
+
+    </header>
+
+
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn">&times;</a>
+      <a href="#" class="todo" >TO-DO</a>
+      <a href="#" class="doing">Doing</a>
+      <a href="#" class="done">DONE!!!!</a>
+
+    </div>
+    <span class="open_button" style="font-size:30px;cursor:pointer" >&#9776; </span>
+
+    <ul>
+      {{#each tasks}}
+        {{> task}}
+      {{/each}}
+    </ul>
+  </div>
+
+</body>

@@ -1,0 +1,37 @@
+<template name="task">
+
+      <li class="{{#if checked}}checked{{/if}} {{#if private}}private{{/if}}">
+    <!--<button class="delete">&times;</button>-->
+
+    <input type="checkbox" checked="{{checked}}" class="toggle-checked" />
+    {{#if isOwner}}
+      <button class="toggle-private">
+        {{#if private}}
+          Private
+        {{else}}
+          Public
+        {{/if}}
+      </button>
+
+      <form id="edit-task" class="edit-task" >
+        <input type="text" id='update_task' class="updateTask" name="task_text"  placeholder="Type to add new tasks" />
+        <input type="number" id='update_pr_no' min="1" class="pr" max="3" name="priority" placeholder="priority of task"/>
+    </form>
+
+      <button id="edit_button" class="toggle-update">edit
+      </button><button class="update_option" id="update_option">&times;</button>
+
+        <button id="save_button" class="toggle-save" style.display="none">update!
+          </button>
+
+    {{/if}}
+
+
+
+    <!-- <input type="text"  placeholder="priority of task" class="prholder"/>-->
+
+    <span class="text"><strong>{{username}}</strong> - {{text}} <small style="font-family:verdana;  text-align:right;"> Task priority:</small><strong ><mark>{{priority}}</mark></strong></span>
+
+
+  </li>
+</template>
