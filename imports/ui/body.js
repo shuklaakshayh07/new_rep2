@@ -25,8 +25,7 @@ Template.body.helpers({
                                                 }
                                          return Tasks2.find({delete:{$eq:true}} ,{sort:{createdAt:-1}});
                                         }
-                                        if(instance.state.get('pr_sort'))
-                                        {
+
                                                     console.log("over here2");
                         //          If hide completed is checked, filter tasks
                                                     if (instance.state.get('hideCompleted'))
@@ -34,7 +33,7 @@ Template.body.helpers({
                                                 return Tasks2.find({delete:{$eq:true}},{ checked: { $ne: true } }, { sort: { priority: 0 } });
                                                     }
                                         return Tasks2.find({delete:{$eq:true}}, { sort: { priority:0}});
-                                        }
+
 
                                }
                             if(instance.state.get('date_sort'))
@@ -45,7 +44,7 @@ Template.body.helpers({
                                     }
                              return Tasks2.find({delete:{$ne:true}} ,{sort:{createdAt:-1}});
                             }
-                        if(instance.state.get('pr_sort'))
+                            if(instance.state.get('pr_sort'))
                          {
                                         console.log("over here2");
             //          If hide completed is checked, filter tasks
@@ -54,8 +53,11 @@ Template.body.helpers({
                                     return Tasks2.find({delete:{$ne:true}},{ checked: { $ne: true } }, { sort: { priority: 0 } });
                                         }
                             return Tasks2.find({delete:{$ne:true}}, { sort: { priority:0}});
-                        }
-
+                          }
+                          if (instance.state.get('hideCompleted'))
+                          {
+                      return Tasks2.find({delete:{$ne:true}},{ checked: { $ne: true } }, { sort: { createdAt: 0 } });
+                          }
 
 
 
