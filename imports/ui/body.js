@@ -14,23 +14,24 @@ Template.body.helpers({
     tasks() {
         //return Tasks.find({});
         const instance = Template.instance();
+                          console.log(instance);
                           console.log("over here");
                                 if(instance.state.get('deleted'))
-                                {
+                                {       console.log("over here2");
                                         if(instance.state.get('date_sort'))
-                                        {
+                                        {    console.log("over here3");
                                             if (instance.state.get('hideCompleted'))
-                                                {
-                                            return Tasks2.find({delete:{$eq:true}},{ checked: { $ne: true } }, { sort: { createdAt: -1 } });
+                                                {    console.log("over here4");
+                                            return Tasks2.find({delete:{$eq:true},checked: { $ne: true } }, { sort: { createdAt: -1 } });
                                                 }
                                          return Tasks2.find({delete:{$eq:true}} ,{sort:{createdAt:-1}});
                                         }
 
-                                                    console.log("over here2");
+                                                    console.log("over here5");
                         //          If hide completed is checked, filter tasks
                                                     if (instance.state.get('hideCompleted'))
-                                                    {
-                                                return Tasks2.find({delete:{$eq:true}},{ checked: { $ne: true } }, { sort: { priority: 0 } });
+                                                    { console.log("over here6");
+                                                return Tasks2.find({delete:{$eq:true}, checked: { $ne: true } }, { sort: { priority: 0 } });
                                                     }
                                         return Tasks2.find({delete:{$eq:true}}, { sort: { priority:0}});
 
@@ -40,7 +41,7 @@ Template.body.helpers({
                             {
                                 if (instance.state.get('hideCompleted'))
                                     {
-                                return Tasks2.find({delete:{$ne:true}},{ checked: { $ne: true } }, { sort: { createdAt: -1 } });
+                                return Tasks2.find({delete:{$ne:true}, checked: { $ne: true } }, { sort: { createdAt: -1 } });
                                     }
                              return Tasks2.find({delete:{$ne:true}} ,{sort:{createdAt:-1}});
                             }
@@ -50,13 +51,13 @@ Template.body.helpers({
             //          If hide completed is checked, filter tasks
                                         if (instance.state.get('hideCompleted'))
                                         {
-                                    return Tasks2.find({delete:{$ne:true}},{ checked: { $ne: true } }, { sort: { priority: 0 } });
+                                    return Tasks2.find({delete:{$ne:true},checked: { $ne: true }},{ sort: { priority: 0 } });
                                         }
                             return Tasks2.find({delete:{$ne:true}}, { sort: { priority:0}});
                           }
                           if (instance.state.get('hideCompleted'))
-                          {
-                      return Tasks2.find({delete:{$ne:true}},{ checked: { $ne: true } }, { sort: { createdAt: 0 } });
+                          {  console.log("over herein if else");
+                      return Tasks2.find({ checked: { $ne: true }, delete:{$ne:true} }, { sort: { createdAt: 0 } });
                           }
 
 
@@ -73,14 +74,31 @@ Template.body.helpers({
 
 });
 
-Template.body.events({
 
+Template.body.events({
+    // $("document").ready(function(event){
+        //     $(".button1").click(function(){
+            //     event.preventDefault();
+            //     console.log('ta');
+            //     const priority=document.getElementById("pr_no").value;
+            //     console.log(priority);
+            //     const task_text=document.getElementById("name_task").value;
+            //     console.log(task_text);
+            //
+            //     var temp;temp={text:task_text,pr:priority};
+            //     console.log(temp);
+            //
+            // Meteor.call('tasks.insert', temp);
+        // }),
+
+
+    // });
     'click .button1'(event) {
         event.preventDefault();
         console.log('ta');
-        const priority=document.getElementById("pr_no").value;
+        const priority=$("#pr_no").val();
         console.log(priority);
-        const task_text=document.getElementById("name_task").value;
+        const task_text=$("#name_task").val();
         console.log(task_text);
 
         var temp;temp={text:task_text,pr:priority};
@@ -113,14 +131,17 @@ Template.body.events({
         instance.state.set('deleted',event.target.checked);
     },
     'click .open_button'(event,instance){
-    document.getElementById("mySidenav").style.width = "250px";
+    // document.getElementById("mySidenav").style.width = "250px";
+    $("#mySidenav").css("width","250px");
+    console.log("open_button");
     event.state.set('todo',true);
     event.state.set('doing',false);
     event.state.set('done',false);
 },
 
     'click .closebtn'(event,instance){
-    document.getElementById("mySidenav").style.width = "0";
+    // document.getElementById("mySidenav").style.width = "0";
+    $("#mySidenav").css("width","0");
 }
 // 'click .todo'(event,instance){
 //         event.state.set('todo',true);

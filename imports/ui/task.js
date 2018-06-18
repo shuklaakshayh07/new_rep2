@@ -54,9 +54,10 @@ Template.task.events({
 
    },
    'click .toggle-update'()//todo
-   {
-       document.getElementById("edit_task").style.display = "block";
-       document.getElementById("edit_button").style.display="none";
+   {    $("#edit_task").css("display","block");
+        $("#edit_button").css("display","none");
+    //    document.getElementById("edit_task").style.display = "block";
+    //    document.getElementById("edit_button").style.display="none";
     //    document.getElementById("save_button").style.display="block";
     //    document.getElementById("update_option").style.display="block";
     //    $('.edit-task input').css('display','block');
@@ -64,16 +65,17 @@ Template.task.events({
    'click .saveEditedTask'(event){
        event.preventDefault();
        console.log("yes");
-       var editedTask = document.getElementById("updated_text").value;
+       var editedTask = $("#updated_text").val();
          event.preventDefault();
-       var editedPr = document.getElementById("update_pr_no").value;
+       var editedPr = $("#update_pr_no").val();
        console.log("editedTask",editedTask);
        console.log("editedPR",editedPr);
         Meteor.call('tasks.edit',this._id,editedTask,editedPr);
-        document.getElementById("updated_text").style.display = "none";
-        document.getElementById("edit_button").style.display="block";
-        document.getElementById("update_pr_no").style.display="none";
-        document.getElementById("Setbtn").style.display="none";
+        $("#updated_text").css("display","none");
+        $("#edit_button").css("display","block");
+        $("#update_pr_no").css("display","none");
+        $("#Setbtn").css("display","none");
+        // document.getElementById("Setbtn").style.display="none";
    }
  //   'click.toggle-save'()
  //   {   event.preventDefault();
