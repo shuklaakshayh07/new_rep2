@@ -21,3 +21,11 @@ reactive-dict
 accounts-ui
 accounts-password
 jquery
+accounts-facebook
+google-config-ui
+facebook-config-ui
+accounts-google
+service-configuration
+accounts-twitter
+twitter-config-ui
+khamoud:accounts-linkedin

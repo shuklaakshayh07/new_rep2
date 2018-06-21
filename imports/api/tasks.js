@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 
-export const Tasks = new Mongo.Collection('tasks ');
+    export const Tasks = new Mongo.Collection('tasks ');
 
 export const Tasks2 = new Mongo.Collection('tasks12');
 
@@ -27,13 +27,16 @@ Meteor.methods({
     if (! this.userId) {
       throw new Meteor.Error('not-authorized');
     }
-
+    console.log(this.userId);
+    console.log(username);
     Tasks2.insert({
       text:temp.text,
       priority:temp.pr,
       createdAt: new Date(),
       owner: this.userId,
+
       username: Meteor.users.findOne(this.userId).username,
+
       updatedAt:null,
     });
   },
