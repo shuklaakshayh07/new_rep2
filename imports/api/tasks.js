@@ -26,16 +26,26 @@ Meteor.methods({
     // Make sure the user is logged in before inserting a task
     if (! this.userId) {
       throw new Meteor.Error('not-authorized');
-    }
+  }var user='';
+
     console.log(this.userId);
-    console.log(username);
+    //console.log(username);
+    if(Meteor.users.findOne(this.userId).username)
+    {
+        user=Meteor.users.findOne(this.userId).username;
+    }
+    else {
+            var user_object=Meteor.users.findOne(this.userId).profile;
+            user=user_object.name;
+        }
+    console.log(user);
     Tasks2.insert({
       text:temp.text,
       priority:temp.pr,
       createdAt: new Date(),
       owner: this.userId,
 
-      username: Meteor.users.findOne(this.userId).username,
+      username: user,
 
       updatedAt:null,
     });
